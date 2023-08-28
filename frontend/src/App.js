@@ -7,10 +7,25 @@ class App {
   constructor($target) {
     this.$target = $target;
 
+    // 다크모드 토글 생성
+    this.darkModeToggle = new DarkModeToggle({
+      $target,
+    });
+    // 로딩중 생성
+    this.loading = new Loading({
+      $target,
+    });
+
     this.searchInput = new SearchInput({
       $target,
       onSearch: keyword => {
-        api.fetchCats(keyword).then(({ data }) => this.setState(data));
+        console.log('show')
+        this.loading.show() // 로딩중 show
+        api.fetchCats(keyword).then(({ data }) => {
+          this.setState(data)
+          console.log('hide')
+          this.loading.hide() // 로딩중 hide
+        });
       }
     });
 

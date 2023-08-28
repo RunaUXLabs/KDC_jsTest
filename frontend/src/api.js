@@ -1,7 +1,7 @@
-const API_ENDPOINT = 
-  // "http://192.168.0.51:8080";
-  // "http://127.0.0.1:8080";
-  "https://rhdd0roxs5.execute-api.ap-northeast-2.amazonaws.com/dev";
+const API_ENDPOINT =
+  // "https://rhdd0roxs5.execute-api.ap-northeast-2.amazonaws.com/dev";
+  "http://localhost:4001";
+  // 백엔드에서 설정된 포트번호
 
 const api = {
   fetchCats: keyword => {

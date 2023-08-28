@@ -24,19 +24,28 @@ class ImageInfo {
 
       this.$imageInfo.innerHTML = `
         <div class="content-wrapper">
-          <div class="title">
+          <h2 class="title">
             <span>${name}</span>
-            <div class="close">x</div>
-          </div>
+            <button type="button" class="close">x</button>
+          </h2>
           <img src="${url}" alt="${name}"/>        
-          <div class="description">
-            <div>성격: ${temperament}</div>
-            <div>태생: ${origin}</div>
-          </div>
+          <dl class="description">
+            <dt>성격:</dt>
+            <dd>${temperament}</dd>
+            <dt>태생:</dt>
+            <dd>${origin}</dd>
+          </dl>
         </div>`;
       this.$imageInfo.style.display = "block";
+      // 닫기버튼
+      const $closeBt = document.querySelector(".close");
+      $closeBt.addEventListener('click', () => {
+        this.$imageInfo.style.display = "none";
+      });
+
     } else {
       this.$imageInfo.style.display = "none";
     }
+
   }
 }

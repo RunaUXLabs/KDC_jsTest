@@ -4,7 +4,8 @@ class SearchResult {
   onClick = null;
 
   constructor({ $target, initialData, onClick }) {
-    this.$searchResult = document.createElement("div");
+    // 검색결과 갤러리리스트
+    this.$searchResult = document.createElement("ul");
     this.$searchResult.className = "SearchResult";
     $target.appendChild(this.$searchResult);
 
@@ -13,7 +14,7 @@ class SearchResult {
 
     this.render();
   }
-
+  // 상태값
   setState(nextData) {
     this.data = nextData;
     this.render();
@@ -23,9 +24,9 @@ class SearchResult {
     this.$searchResult.innerHTML = this.data
       .map(
         cat => `
-          <div class="item">
+          <li class="item">
             <img src=${cat.url} alt=${cat.name} />
-          </div>
+          </li>
         `
       )
       .join("");
