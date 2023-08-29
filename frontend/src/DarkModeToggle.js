@@ -2,8 +2,8 @@ class DarkModeToggle {
   isDarkMode = null;
 
   constructor({ $target}) {
-    const $form = document.createElement("form");
-    this.$form = $form;
+    const $section = document.createElement("section");
+    this.$section = $section;
     
     const $darkModeToggle = document.createElement("input");
     this.$darkModeToggle = $darkModeToggle;
@@ -14,9 +14,9 @@ class DarkModeToggle {
     this.$label.textContent = 'DarkMode'
 
     $darkModeToggle.className = "darkModeToggle";
-    $target.appendChild($form);
-    $form.appendChild($darkModeToggle);
-    $form.appendChild($label);
+    $target.appendChild($section);
+    $section.appendChild($darkModeToggle);
+    $section.appendChild($label);
 
     $darkModeToggle.addEventListener("change", e => {
       // console.dir(e.target)

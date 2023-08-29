@@ -19,11 +19,21 @@ class App {
     this.searchInput = new SearchInput({
       $target,
       onSearch: keyword => {
-        console.log('show')
+        console.log('로딩중show')
         this.loading.show() // 로딩중 show
         api.fetchCats(keyword).then(({ data }) => {
           this.setState(data)
-          console.log('hide')
+          console.log('로딩중hide')
+          this.loading.hide() // 로딩중 hide
+        });
+      },
+      onRandomSearch: () => {
+        console.log('랜덤?')
+        console.log('로딩중show')
+        this.loading.show() // 로딩중 show
+        api.fetchRandomCats().then(({ data }) => {
+          this.setState(data)
+          console.log('로딩중hide')
           this.loading.hide() // 로딩중 hide
         });
       }

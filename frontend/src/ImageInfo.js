@@ -4,7 +4,7 @@ class ImageInfo {
 
   constructor({ $target, data }) {
     const $imageInfo = document.createElement("div");
-    $imageInfo.className = "ImageInfo";
+    $imageInfo.className = "imageInfo";
     this.$imageInfo = $imageInfo;
     $target.appendChild($imageInfo);
 

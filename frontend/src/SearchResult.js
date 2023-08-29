@@ -6,7 +6,7 @@ class SearchResult {
   constructor({ $target, initialData, onClick }) {
     // 검색결과 갤러리리스트
     this.$searchResult = document.createElement("ul");
-    this.$searchResult.className = "SearchResult";
+    this.$searchResult.className = "searchResult";
     $target.appendChild(this.$searchResult);
 
     this.data = initialData;
