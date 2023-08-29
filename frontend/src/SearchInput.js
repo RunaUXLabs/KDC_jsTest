@@ -13,9 +13,7 @@ class SearchInput {
     $searchInput.className = "searchInput";
 
     $searchInput.addEventListener("keyup", e => {
-      if (e.keyCode === 13) {
-        onSearch(e.target.value);
-      }
+      if (e.key === 13) onSearch(e.target.value);
     });
 
     // 랜덤버튼
@@ -29,9 +27,7 @@ class SearchInput {
     $section.appendChild($searchInput);
     $section.appendChild($randomButton);
 
-    $randomButton.addEventListener("click", e => {
-      onRandomSearch()
-    })
+    $randomButton.addEventListener("click", e => onRandomSearch() )
 
     // 키워드를 입력한 상태에서 input 을 클릭할 시 키워드 삭제
     $searchInput.addEventListener("click", e => e.target.value = '')

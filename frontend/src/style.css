@@ -67,9 +67,9 @@ section{
   border-bottom: 1px solid var(--Black);
   flex: 1 1 70%;
 }
+button{ cursor: pointer; }
 .randomButton {
   flex: 1 1 20%;
-  cursor: pointer;
   font-size: 2rem;
 }
 .searchResult {
@@ -83,6 +83,7 @@ section{
   display: inline-block;
   margin: 0 0 1em;
   width: 100%;
+  cursor: pointer;
 }
 .searchResult img {
   width: 100%;
@@ -91,10 +92,6 @@ section{
 }
 
 
-.infoMassage {
-  text-align: center;
-  margin: 40px 0;
-}
 .imageInfo {
   position: fixed;
   left: 0;
@@ -123,7 +120,7 @@ section{
   font-weight: 800;
 }
 .imageInfo .description dd {
-  flex: 1;
+  flex: 1 1 90%;
 }
 
 .imageInfo .content-wrapper {
@@ -139,8 +136,7 @@ section{
   width: 100%;
 }
 .imageInfo .content-wrapper h2 .close {
-  cursor: pointer;
-  padding: 2px 7px;
+  padding: 2px 10px;
 }
 
 
@@ -206,4 +202,13 @@ section{
   background-color: inherit;
   color: inherit;
   border-bottom: 1px solid var(--white);
+}
+:root[color-mode = 'dark'] button {
+  background-color: inherit;
+  color: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+:root[color-mode = 'dark'] button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.7);
 }
