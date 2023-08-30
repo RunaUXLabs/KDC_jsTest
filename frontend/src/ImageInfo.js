@@ -9,10 +9,10 @@ class ImageInfo {
     $target.appendChild($imageInfo);
 
     this.data = data;
-    
     this.render();
   }
 
+  // 상태값
   setState(nextData) {
     this.data = nextData;
     this.render();
@@ -62,13 +62,13 @@ class ImageInfo {
 
       // x버튼, 모달 외 영역 클릭시 닫기 이벤트
       this.$imageInfo.addEventListener('click', (e) => {
-        console.log(e.target.className);
+        // console.log(e.target.className);
         if (e.target.className === 'close' || e.target.className === 'imageInfo') this.closeImageInfo();
       });
 
       // 키이벤트, 각 키마다 먹는 이벤트가 다름, esc버튼은 keydown
       document.addEventListener('keydown', (e) => {
-        console.log(e.key); // keycode는 이제 사용하지 않는다
+        // console.log(e.key); // keycode는 이제 사용하지 않는다
         if (e.key === 'Escape') this.closeImageInfo();
       });
 

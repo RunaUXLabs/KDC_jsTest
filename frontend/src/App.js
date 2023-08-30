@@ -6,7 +6,7 @@ class App {
 
   constructor($target) {
     this.$target = $target;
-    
+
     const $form = document.createElement("form");
     this.$form = $form;
     $target.appendChild($form);
@@ -30,6 +30,9 @@ class App {
           this.setState(data);
           console.log('로딩중hide');
           this.loading.hide(); // 로딩중 hide
+
+          // 마지막 검색결과는 항상 출력, 로컬에 저장
+          this.saveResult(data);
         });
       }
     });
@@ -54,13 +57,14 @@ class App {
       initialData: this.data,
       // 클릭시 상세정보
       onClick: cat => {
-        console.log(cat)
+        console.log(cat);
         this.imageInfo.showDetail({
           visible: true,
           cat
         });
       }
     });
+    
     // 상세모달
     this.imageInfo = new ImageInfo({
       $target,
@@ -69,11 +73,28 @@ class App {
         image: null
       }
     });
+
+    // 초기화
+    this.init();
   }
 
+  // 상태값
   setState(nextData) {
-    console.log(this);
+    // console.log(this);
     this.data = nextData;
     this.searchResult.setState(nextData);
+  }
+
+  // 마지막 검색결과값 저장
+  saveResult(result) {
+    // console.log(result)
+    localStorage.setItem('lastResult', JSON.stringify(result));
+  }
+
+  // 초기화, 로컬스토리지 lastResult 값이 null이면 빈배열 반환, 있으면 JSON으로 파싱한 값을 파라미터로 넘겨 상태업데이트
+  init() {
+    const lastResult = localStorage.getItem('lastResult') === null ? [] : JSON.parse(localStorage.getItem('lastResult'));
+    // console.log(lastResult)
+    this.setState(lastResult);
   }
 }

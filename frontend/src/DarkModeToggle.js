@@ -22,6 +22,8 @@ class DarkModeToggle {
       // 체크박스 체크 여부를 확인하여 color-mode속성값 제어, 리팩토링
     });
     // console.log("DarkModeToggle created.", this); // 생성여부 확인
+
+    // 초기화
     this.initColorMode();
 
   }
@@ -43,6 +45,6 @@ class DarkModeToggle {
   setColorMode(color) {
     document.documentElement.setAttribute('color-mode', color ? 'dark' : 'light');
   }
-  
+
   render() { }
 }

@@ -15,7 +15,7 @@
   --Black: #000;
   --white: white;
 }
-
+ul, li{ list-style: none; }
 *::before,
 *::after {
   box-sizing: inherit;
@@ -46,6 +46,9 @@ form .darkModeToggle + label{
 }
 form .wrap{
   flex: 1 1 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 form .wrap .searchInput {
   font-size: 2rem;
@@ -58,7 +61,17 @@ form .randomButton {
   flex: 1 1 20%;
   font-size: 2rem;
 }
-
+form .keywordHistory{
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  padding: 0 20px;
+}
+form .keywordHistory::before{
+  content: '최근검색어';
+  font-weight: 800;
+  margin: 0 20px 0 0;
+}
 .loading{
   width: 100vw;
   height: 100vh;
