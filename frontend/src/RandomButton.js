@@ -16,3 +16,5 @@ class RandomButton {
         $randomButton.addEventListener("click", e => onRandomSearch());
     }
 }
+
+export default RandomButton;

@@ -1,3 +1,5 @@
+import uniqueArray from "./utils/uniqueArray.js";
+
 class KeywordHistory {
     $keywordHidtory = null;
     data = null;
@@ -24,8 +26,8 @@ class KeywordHistory {
     addKeyword(keyword) {
         // 로컬스토리지에 키워드 저장하여 키워드 히스토리에서 연동
         let keywordHistory = this.getHistory();
-
         keywordHistory.unshift(keyword); // 키워드 앞으로 추가
+        keywordHistory = uniqueArray(keywordHistory); // 중복제거
         keywordHistory = keywordHistory.slice(0, 5); // 키워드갯수 5개 제한
         localStorage.setItem('keywordHistory', keywordHistory.join(',')); // 문자열로 변환
 
@@ -64,3 +66,5 @@ class KeywordHistory {
 
     }
 }
+
+export default KeywordHistory;

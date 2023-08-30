@@ -1,5 +1,13 @@
 console.log("app is running!");
 
+import DarkModeToggle from './DarkModeToggle.js'
+import Loading from './Loading.js'
+import SearchInput from './SearchInput.js'
+import RandomButton from './RandomButton.js'
+import SearchResult from './SearchResult.js'
+import ImageInfo from './ImageInfo.js'
+import api from './api.js'
+
 class App {
   $target = null;
   data = [];
@@ -25,11 +33,11 @@ class App {
       $form,
       // 키워드 검색
       onSearch: keyword => {
-        console.log('로딩중show');
+        // console.log('로딩중show');
         this.loading.show(); // 로딩중 show
         api.fetchCats(keyword).then(({ data }) => {
-          this.setState(data);
-          console.log('로딩중hide');
+          this.setState(data ? data : []); // 데이터 없으면 빈 배열 반환
+          // console.log('로딩중hide');
           this.loading.hide(); // 로딩중 hide
 
           // 마지막 검색결과는 항상 출력, 로컬에 저장
@@ -115,3 +123,5 @@ class App {
     this.setState(lastResult);
   }
 }
+
+export default App;

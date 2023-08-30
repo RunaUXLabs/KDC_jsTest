@@ -48,3 +48,5 @@ class DarkModeToggle {
 
   render() { }
 }
+
+export default DarkModeToggle;
