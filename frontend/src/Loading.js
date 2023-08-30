@@ -14,15 +14,15 @@ class Loading {
 
     this.render();
   }
-  show(){
+  show() {
     this.setState({
       show: true
-    })
+    });
   }
-  hide(){
+  hide() {
     this.setState({
       show: false
-    })
+    });
   }
   // 상태값
   setState(nextData) {

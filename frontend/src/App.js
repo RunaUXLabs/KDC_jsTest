@@ -6,17 +6,22 @@ class App {
 
   constructor($target) {
     this.$target = $target;
+    
+    const $form = document.createElement("form");
+    this.$form = $form;
+    $target.appendChild($form);
 
     // 다크모드 토글 생성
     this.darkModeToggle = new DarkModeToggle({
-      $target,
+      $form,
     });
     // 로딩중 생성
     this.loading = new Loading({
       $target,
     });
+    // 검색기능
     this.searchInput = new SearchInput({
-      $target,
+      $form,
       // 키워드 검색
       onSearch: keyword => {
         console.log('로딩중show');
@@ -26,8 +31,11 @@ class App {
           console.log('로딩중hide');
           this.loading.hide(); // 로딩중 hide
         });
-      },
-      // 랜덤고양이버튼
+      }
+    });
+    // 랜덤버튼 생성
+    this.randomButton = new RandomButton({
+      $form,
       onRandomSearch: () => {
         console.log('랜덤?');
         console.log('로딩중show');
@@ -40,6 +48,7 @@ class App {
       }
     });
 
+    // 결과출력
     this.searchResult = new SearchResult({
       $target,
       initialData: this.data,
@@ -52,7 +61,7 @@ class App {
         });
       }
     });
-
+    // 상세모달
     this.imageInfo = new ImageInfo({
       $target,
       data: {

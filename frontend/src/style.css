@@ -9,19 +9,15 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: Goyang;
 }
 :root {
   --Black: #000;
   --white: white;
 }
 
-body * {
-  font-family: Goyang;
-}
-
-*,
-*:before,
-*:after {
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
@@ -30,21 +26,39 @@ body * {
   max-width: 1200px;
   column-gap: 1.5em;
 }
-section{
+button{ cursor: pointer; }
+
+form{
   width: 100%;
   display: flex;
   flex-flow: row wrap;
   gap: 10px;
   margin: 0 0 20px 0;
 }
-.darkModeToggle{
-  width: 30px;
+form .darkModeToggle{
+  flex: 0 0 30px;
   height: 30px;
 }
-.darkModeToggle + label{
+form .darkModeToggle + label{
+  flex: 1 1 90%;
   display: flex;
   align-items: center;
 }
+form .wrap{
+  flex: 1 1 70%;
+}
+form .wrap .searchInput {
+  font-size: 2rem;
+  padding: 10px 15px;
+  border: none;
+  border-bottom: 1px solid var(--Black);
+  width: 100%;
+}
+form .randomButton {
+  flex: 1 1 20%;
+  font-size: 2rem;
+}
+
 .loading{
   width: 100vw;
   height: 100vh;
@@ -60,18 +74,7 @@ section{
   align-items: center;
   z-index: 100;
 }
-.searchInput {
-  font-size: 40px;
-  padding: 10px 15px;
-  border: none;
-  border-bottom: 1px solid var(--Black);
-  flex: 1 1 70%;
-}
-button{ cursor: pointer; }
-.randomButton {
-  flex: 1 1 20%;
-  font-size: 2rem;
-}
+
 .searchResult {
   margin-top: 10px;
   display: grid;
