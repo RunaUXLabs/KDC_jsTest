@@ -3,6 +3,7 @@ console.log("app is running!");
 class App {
   $target = null;
   data = [];
+  page = 1;
 
   constructor($target) {
     this.$target = $target;
@@ -40,12 +41,12 @@ class App {
     this.randomButton = new RandomButton({
       $form,
       onRandomSearch: () => {
-        console.log('랜덤?');
-        console.log('로딩중show');
+        // console.log('랜덤?');
+        // console.log('로딩중show');
         this.loading.show(); // 로딩중 show
         api.fetchRandomCats().then(({ data }) => {
           this.setState(data);
-          console.log('로딩중hide');
+          // console.log('로딩중hide');
           this.loading.hide(); // 로딩중 hide
         });
       }
@@ -61,6 +62,22 @@ class App {
         this.imageInfo.showDetail({
           visible: true,
           cat
+        });
+      },
+      // 다음페이지 로딩
+      onNextPage: () => {
+        console.log('다음페이지로딩')
+        this.loading.show();
+        const keywordHistory = localStorage.getItem('keywordHistory') === null ? [] : localStorage.getItem('keywordHistory').split(',');
+        // console.log(keywordHistory)
+        const lastKeyword = keywordHistory[0];
+        const page = this.page + 1;
+        api.fetchCatsPage(lastKeyword, page).then(({ data }) => {
+          let newData = this.data.concat(data)
+          // console.log(newData)
+          this.setState(newData)
+          this.page = page;
+          this.loading.hide();
         });
       }
     });
