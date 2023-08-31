@@ -18,6 +18,13 @@ class ImageInfo {
   setState(nextData) {
     this.data = nextData;
     this.render();
+    this.setFade(nextData.visible)
+  }
+
+  // fade in/out효과
+  setFade(visible){
+    if(visible) this.$imageInfo.classList.add('show');
+    else this.$imageInfo.classList.remove('show');
   }
 
   // 고양이 상세정보
@@ -61,12 +68,11 @@ class ImageInfo {
             <dd>${origin}</dd>
           </dl>
         </div>`;
-      this.$imageInfo.style.display = "block";
 
       // x버튼, 모달 외 영역 클릭시 닫기 이벤트
       this.$imageInfo.addEventListener('click', (e) => {
-        // console.log(e.target.className);
-        if (e.target.className === 'close' || e.target.className === 'imageInfo') this.closeImageInfo();
+        console.log(e.target.className);
+        if (e.target.className === 'close' || e.target.className === 'imageInfo show') this.closeImageInfo();
       });
 
       // 키이벤트, 각 키마다 먹는 이벤트가 다름, esc버튼은 keydown
@@ -75,10 +81,7 @@ class ImageInfo {
         if (e.key === 'Escape') this.closeImageInfo();
       });
 
-    } else {
-      this.$imageInfo.style.display = "none";
-    }
-
+    } else this.$imageInfo.classList.remove('show');
   }
 }
 
