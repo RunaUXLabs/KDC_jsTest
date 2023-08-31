@@ -8,7 +8,7 @@ class RandomButton {
         this.$randomButton = $randomButton;
         $randomButton.className = "randomButton";
         $randomButton.type = "button";
-        $randomButton.textContent = "랜덤고양이👀";
+        $randomButton.textContent = "랜덤👀출력";
 
         $form.appendChild($randomButton);
 

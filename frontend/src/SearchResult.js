@@ -13,6 +13,8 @@ class SearchResult {
     this.onClick = onClick;
     this.onNextPage = onNextPage;
 
+    
+
     this.render();
   }
   // 상태값
@@ -67,8 +69,7 @@ class SearchResult {
             <img src='./src/200x200.png' data-src=${cat.url} alt=${cat.name} />
           </li>
         `
-      )
-      .join("");
+      ).join("");
 
     this.$searchResult.querySelectorAll(".item").forEach(($item, index) => {
       // 클릭시 상세정보 모달연결

@@ -1,17 +1,19 @@
 console.log("app is running!");
 
-import DarkModeToggle from './DarkModeToggle.js'
-import Loading from './Loading.js'
-import SearchInput from './SearchInput.js'
-import RandomButton from './RandomButton.js'
-import SearchResult from './SearchResult.js'
-import ImageInfo from './ImageInfo.js'
-import api from './api.js'
+import DarkModeToggle from './DarkModeToggle.js';
+import Loading from './Loading.js';
+import SearchInput from './SearchInput.js';
+import RandomButton from './RandomButton.js';
+import Empty from "./Empty.js";
+import SearchResult from './SearchResult.js';
+import ImageInfo from './ImageInfo.js';
+import api from './api.js';
 
+const DEFAULT_PAGE = 1;
 class App {
   $target = null;
   data = [];
-  page = 1;
+  // page = DEFAULT_PAGE;
 
   constructor($target) {
     this.$target = $target;
@@ -68,17 +70,17 @@ class App {
       },
       // 다음페이지 로딩
       onNextPage: () => {
-        console.log('다음페이지로딩')
+        console.log('다음페이지로딩');
         this.loading.show();
         const keywordHistory = localStorage.getItem('keywordHistory') === null ? [] : localStorage.getItem('keywordHistory').split(',');
         // console.log(keywordHistory)
         const lastKeyword = keywordHistory[0];
         const page = this.page + 1;
         api.fetchCatsPage(lastKeyword, page).then(({ data }) => {
-          let newData = this.data.concat(data)
+          let newData = this.data.concat(data);
           // console.log(newData)
-          this.setState(newData)
-          this.page = page;
+          this.setState(newData);
+          this.page = DEFAULT_PAGE;
           this.loading.hide();
         });
       }
@@ -91,6 +93,13 @@ class App {
         image: null
       }
     });
+    // 안내문구
+    if (this.data === null || this.data.length === 0) {
+      // 공백안내(서버에러 or 검색결과없음)
+      this.empty = new Empty({
+        $target,
+      });
+    }
 
     // 초기화
     this.init();
@@ -98,9 +107,10 @@ class App {
 
   // 상태값
   setState(nextData) {
-    // console.log(this);
     this.data = nextData;
     this.searchResult.setState(nextData);
+    this.empty.show(nextData.length === 0);
+    console.log(this.searchResult);
   }
 
   // 마지막 검색결과값 저장

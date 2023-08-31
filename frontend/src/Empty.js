@@ -1,12 +1,12 @@
-class Loading {
-  $loading = null;
+class Empty {
+  $empty = null;
   data = null;
 
   constructor({ $target }) {
-    const $loading = document.createElement("div");
-    this.$loading = $loading;
-    this.$loading.className = "loading";
-    $target.appendChild(this.$loading);
+    const $empty = document.createElement("div");
+    this.$empty = $empty;
+    this.$empty.className = "empty";
+    $target.appendChild(this.$empty);
 
     // 초기 data상태 설정
     this.data = {
@@ -20,24 +20,22 @@ class Loading {
       show: true
     });
   }
-  hide() {
-    this.setState({
-      show: false
-    });
-  }
   // 상태값
   setState(nextData) {
     this.data = nextData;
     this.render();
   }
+  
   render() {
     // 초기 data의 show 상태에 따라 렌더링 여부 결정
     if (this.data.show) {
-      this.$loading.innerHTML = `<p>🔥로딩중🔥</p>`;
+      this.$empty.style.display = 'flex';
+      this.$empty.innerHTML = `🐱‍🚀검색 결과가 없습니다🐱‍🚀`;
     } else {
-      this.$loading.innerHTML = ``;
+      this.$empty.style.display = 'none';
+      this.$empty.innerHTML = ``;
     }
   }
 }
 
-export default Loading;
+export default Empty;

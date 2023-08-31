@@ -16,7 +16,7 @@ class SearchInput {
     const $searchInput = document.createElement("input");
     this.$searchInput = $searchInput;
     this.$searchInput.className = "searchInput";
-    this.$searchInput.placeholder = "고양이를 검색해보세요.|";
+    this.$searchInput.placeholder = "고양이품종 입력 후 ENTER누르면 검색됩니다|";
     this.$searchInput.setAttribute("autofocus", true);
 
     $wrap.appendChild($searchInput);
