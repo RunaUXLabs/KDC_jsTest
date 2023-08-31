@@ -1,5 +1,5 @@
-import { API_ENDPOINT } from './utils/config.js'
-import { REQUEST_ERROR } from './utils/error.js'
+import { API_ENDPOINT } from './config.js'
+import { REQUEST_ERROR } from './error.js'
 
 const request = async (url) => {
   try {

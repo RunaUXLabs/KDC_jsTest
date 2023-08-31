@@ -33,11 +33,9 @@ class App {
       $form,
       // 키워드 검색
       onSearch: keyword => {
-        // console.log('로딩중show');
         this.loading.show(); // 로딩중 show
         api.fetchCats(keyword).then(({ data }) => {
           this.setState(data ? data : []); // 데이터 없으면 빈 배열 반환
-          // console.log('로딩중hide');
           this.loading.hide(); // 로딩중 hide
 
           // 마지막 검색결과는 항상 출력, 로컬에 저장
@@ -49,17 +47,13 @@ class App {
     this.randomButton = new RandomButton({
       $form,
       onRandomSearch: () => {
-        // console.log('랜덤?');
-        // console.log('로딩중show');
         this.loading.show(); // 로딩중 show
         api.fetchRandomCats().then(({ data }) => {
           this.setState(data);
-          // console.log('로딩중hide');
           this.loading.hide(); // 로딩중 hide
         });
       }
     });
-
     // 결과출력
     this.searchResult = new SearchResult({
       $target,
@@ -89,8 +83,7 @@ class App {
         });
       }
     });
-    
-    // 상세모달
+    // 상세모달 기본값
     this.imageInfo = new ImageInfo({
       $target,
       data: {

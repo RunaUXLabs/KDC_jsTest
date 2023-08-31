@@ -1,3 +1,4 @@
+// 테스트파일을 만들때는 이중확장자를 쓴다. *.test.js
 const validator = require('../utils/validator')
 
 describe('validator.js', () => {
