@@ -67,6 +67,7 @@ class SearchResult {
         (cat, index) => `
           <li class="item" data-index=${index}>
             <img src='./src/200x200.png' data-src=${cat.url} alt=${cat.name} />
+            <div class="content">${cat.name}</div>
           </li>
         `
       ).join("");

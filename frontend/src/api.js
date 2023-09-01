@@ -18,6 +18,11 @@ const api = {
     return fetch(`${API_ENDPOINT}/api/cats/search?q=${keyword}`)
       .then( res => res.json() );
   },
+  // 갯수제한검색
+  fetchCatsLimit: (keyword, limit) => {
+    return fetch(`${API_ENDPOINT}/api/cats/search?q=${keyword}&limit=${limit}`)
+      .then( res => res.json() );
+  },
   // 다음페이지로딩
   fetchCatsPage: (keyword, page) => {
     return fetch(`${API_ENDPOINT}/api/cats/search?q=${keyword}&page=${page}`)

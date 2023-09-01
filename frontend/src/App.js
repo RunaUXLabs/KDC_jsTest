@@ -34,9 +34,9 @@ class App {
     this.searchInput = new SearchInput({
       $form,
       // 키워드 검색
-      onSearch: keyword => {
+      onSearch: (keyword, limit) => {
         this.loading.show(); // 로딩중 show
-        api.fetchCats(keyword).then(({ data }) => {
+        api.fetchCatsLimit(keyword, limit).then(({ data }) => {
           this.setState(data ? data : []); // 데이터 없으면 빈 배열 반환
           this.loading.hide(); // 로딩중 hide
 
@@ -45,7 +45,7 @@ class App {
         });
       }
     });
-    // 랜덤버튼 생성
+    // 랜덤출력버튼 생성
     this.randomButton = new RandomButton({
       $form,
       onRandomSearch: () => {
@@ -56,7 +56,7 @@ class App {
         });
       }
     });
-    // 결과출력
+    // 검색결과출력
     this.searchResult = new SearchResult({
       $target,
       initialData: this.data,
