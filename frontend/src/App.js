@@ -7,6 +7,7 @@ import RandomButton from './RandomButton.js';
 import Empty from "./Empty.js";
 import SearchResult from './SearchResult.js';
 import ImageInfo from './ImageInfo.js';
+import Banner from './Banner.js';
 import api from './api.js';
 
 const DEFAULT_PAGE = 1;
@@ -56,6 +57,11 @@ class App {
         });
       }
     });
+    // 랜덤슬라이드 생성
+    this.banner = new Banner({
+      $target
+    })
+
     // 검색결과출력
     this.searchResult = new SearchResult({
       $target,
