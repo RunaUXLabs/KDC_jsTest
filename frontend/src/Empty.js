@@ -15,9 +15,9 @@ class Empty {
 
     this.render();
   }
-  show() {
+  show(isEmpty) {
     this.setState({
-      show: true
+      show: isEmpty
     });
   }
   // 상태값
